@@ -90,9 +90,59 @@ class Homepage extends StatelessWidget {
                   EmoticonSticker(emoticon: '😔', label: 'Sad'),
                 ],
               ),
+
+              const SizedBox(height: 40),
+
+              // Exercises section
+              const Text(
+                'Exercises',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              Expanded(
+                child: ListView(
+                  children: [
+                    ExerciseTile(
+                      icon: Icons.favorite,
+                      color: Colors.red,
+                      title: 'Cardio',
+                      subtitle: '20 min workout',
+                    ),
+                    ExerciseTile(
+                      icon: Icons.self_improvement,
+                      color: Colors.green,
+                      title: 'Meditation',
+                      subtitle: '10 min breathing',
+                    ),
+                    ExerciseTile(
+                      icon: Icons.fitness_center,
+                      color: Colors.orange,
+                      title: 'Strength',
+                      subtitle: '30 min training',
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
+      ),
+
+      // Bottom navigation bar
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blue[800],
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white54,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.house), label: 'Explore'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
       ),
     );
   }
@@ -129,6 +179,68 @@ class EmoticonSticker extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+// Custom widget for exercise tiles
+class ExerciseTile extends StatelessWidget {
+  final IconData icon;
+  final Color color;
+  final String title;
+  final String subtitle;
+
+  const ExerciseTile({
+    super.key,
+    required this.icon,
+    required this.color,
+    required this.title,
+    required this.subtitle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: Colors.blue[800],
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Icon(icon, color: color, size: 28),
+          ),
+          const SizedBox(width: 15),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 5),
+              Text(
+                subtitle,
+                style: const TextStyle(
+                  color: Colors.white54,
+                  fontSize: 14,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
