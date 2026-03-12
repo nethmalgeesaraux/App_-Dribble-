@@ -7,77 +7,128 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[900],
-      body: Padding(
-        padding: const EdgeInsets.all(25.0),
-        child: Column(
-          children: [
-            SafeArea(
-              child: Row(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Greeting + Notification
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Greeting texts
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       Text(
-                        'Hi Nethmal!',
+                        'Hi, Nethmal!',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 25,
+                          fontSize: 26,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       SizedBox(height: 5),
                       Text(
-                        'Welcome Back',
+                        '23 Mar, 2026',
                         style: TextStyle(
                           color: Colors.white70,
                           fontSize: 16,
-                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
                   ),
-
-                  // Notification bell icon
-                  Icon(
+                  const Icon(
                     Icons.notifications,
                     color: Colors.white,
                     size: 28,
                   ),
                 ],
               ),
-            ),
 
-            const SizedBox(height: 30),
+              const SizedBox(height: 30),
 
-            // Search bar
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search',
-                  hintStyle: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 16,
-                  ),
-                  border: InputBorder.none,
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.grey,
-                    size: 24,
+              // Search bar
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                decoration: BoxDecoration(
+                  color: Colors.blue[800],
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const TextField(
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.search, color: Colors.white70),
+                    hintText: 'Search',
+                    hintStyle: TextStyle(color: Colors.white54),
+                    border: InputBorder.none,
                   ),
                 ),
               ),
-            ),
-          ],
+
+              const SizedBox(height: 30),
+
+              // "How do you feel?" prompt
+              const Text(
+                'How do you feel?',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // Emoji faces row with sticker style
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const [
+                  EmoticonSticker(emoticon: '😃', label: 'Happy'),
+                  EmoticonSticker(emoticon: '🙂', label: 'Fine'),
+                  EmoticonSticker(emoticon: '😐', label: 'Neutral'),
+                  EmoticonSticker(emoticon: '😔', label: 'Sad'),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+// Custom widget for emoji 
+class EmoticonSticker extends StatelessWidget {
+  final String emoticon;
+  final String label;
+  const EmoticonSticker({super.key, required this.emoticon, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(18),
+          decoration: BoxDecoration(
+            color: Colors.blue[800],
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Text(
+            emoticon,
+            style: const TextStyle(fontSize: 28),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          label,
+          style: const TextStyle(
+            color: Colors.white70,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
     );
   }
 }
