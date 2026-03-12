@@ -80,14 +80,14 @@ class Homepage extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // Emoji faces row with sticker style
+              // Emoji faces row
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: const [
-                  EmoticonSticker(emoticon: '😃', label: 'Happy'),
+                  EmoticonSticker(emoticon: '😟', label: 'Bad'),
                   EmoticonSticker(emoticon: '🙂', label: 'Fine'),
-                  EmoticonSticker(emoticon: '😐', label: 'Neutral'),
-                  EmoticonSticker(emoticon: '😔', label: 'Sad'),
+                  EmoticonSticker(emoticon: '😌', label: 'Well'),
+                  EmoticonSticker(emoticon: '😄', label: 'Excellent'),
                 ],
               ),
 
@@ -106,24 +106,24 @@ class Homepage extends StatelessWidget {
 
               Expanded(
                 child: ListView(
-                  children: [
+                  children: const [
                     ExerciseTile(
-                      icon: Icons.favorite,
-                      color: Colors.red,
-                      title: 'Cardio',
-                      subtitle: '20 min workout',
-                    ),
-                    ExerciseTile(
-                      icon: Icons.self_improvement,
-                      color: Colors.green,
-                      title: 'Meditation',
-                      subtitle: '10 min breathing',
-                    ),
-                    ExerciseTile(
-                      icon: Icons.fitness_center,
+                      icon: Icons.record_voice_over,
                       color: Colors.orange,
-                      title: 'Strength',
-                      subtitle: '30 min training',
+                      title: 'Speaking Skillz',
+                      subtitle: '16 Exercises',
+                    ),
+                    ExerciseTile(
+                      icon: Icons.menu_book,
+                      color: Colors.green,
+                      title: 'Reading Skills',
+                      subtitle: '8 Exercises',
+                    ),
+                    ExerciseTile(
+                      icon: Icons.edit,
+                      color: Colors.purple,
+                      title: 'Writing Skills',
+                      subtitle: '20 Exercises',
                     ),
                   ],
                 ),
@@ -140,7 +140,7 @@ class Homepage extends StatelessWidget {
         unselectedItemColor: Colors.white54,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.house), label: 'Explore'),
+          BottomNavigationBarItem(icon: Icon(Icons.description), label: 'Exercises'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
